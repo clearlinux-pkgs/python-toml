@@ -4,7 +4,7 @@
 #
 Name     : python-toml
 Version  : 0.9.2
-Release  : 5
+Release  : 6
 URL      : http://pypi.debian.net/toml/toml-0.9.2.tar.gz
 Source0  : http://pypi.debian.net/toml/toml-0.9.2.tar.gz
 Summary  : Python Library for Tom's Obvious, Minimal Language
@@ -18,10 +18,7 @@ BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
-TOML
 ====
-Original repository: https://github.com/uiri/toml
-See also https://github.com/mojombo/toml
 
 %package python
 Summary: python components for the python-toml package.
@@ -35,20 +32,27 @@ python components for the python-toml package.
 %setup -q -n toml-0.9.2
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1484570188
+export SOURCE_DATE_EPOCH=1503076740
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1484570188
+export SOURCE_DATE_EPOCH=1503076740
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
