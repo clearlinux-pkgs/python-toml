@@ -4,12 +4,13 @@
 #
 Name     : python-toml
 Version  : 0.9.2
-Release  : 6
+Release  : 7
 URL      : http://pypi.debian.net/toml/toml-0.9.2.tar.gz
 Source0  : http://pypi.debian.net/toml/toml-0.9.2.tar.gz
 Summary  : Python Library for Tom's Obvious, Minimal Language
 Group    : Development/Tools
 License  : MIT
+Requires: python-toml-legacypython
 Requires: python-toml-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -20,9 +21,18 @@ BuildRequires : setuptools
 %description
 ====
 
+%package legacypython
+Summary: legacypython components for the python-toml package.
+Group: Default
+
+%description legacypython
+legacypython components for the python-toml package.
+
+
 %package python
 Summary: python components for the python-toml package.
 Group: Default
+Requires: python-toml-legacypython
 
 %description python
 python components for the python-toml package.
@@ -36,12 +46,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1503076740
+export SOURCE_DATE_EPOCH=1505058766
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1503076740
+export SOURCE_DATE_EPOCH=1505058766
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -52,7 +62,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
