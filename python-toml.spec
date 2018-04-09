@@ -4,13 +4,12 @@
 #
 Name     : python-toml
 Version  : 0.9.4
-Release  : 14
+Release  : 15
 URL      : http://pypi.debian.net/toml/toml-0.9.4.tar.gz
 Source0  : http://pypi.debian.net/toml/toml-0.9.4.tar.gz
 Summary  : Python Library for Tom's Obvious, Minimal Language
 Group    : Development/Tools
 License  : MIT
-Requires: python-toml-legacypython
 Requires: python-toml-python3
 Requires: python-toml-python
 BuildRequires : pbr
@@ -23,19 +22,9 @@ BuildRequires : setuptools
 TOML
         ****
 
-%package legacypython
-Summary: legacypython components for the python-toml package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the python-toml package.
-
-
 %package python
 Summary: python components for the python-toml package.
 Group: Default
-Requires: python-toml-legacypython
 Requires: python-toml-python3
 
 %description python
@@ -59,25 +48,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1514310619
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1523299925
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1514310619
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
