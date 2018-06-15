@@ -14,7 +14,7 @@ Requires: python-toml-python3
 Requires: python-toml-python
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
