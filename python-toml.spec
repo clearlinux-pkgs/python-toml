@@ -4,7 +4,7 @@
 #
 Name     : python-toml
 Version  : 0.9.4
-Release  : 18
+Release  : 19
 URL      : http://pypi.debian.net/toml/toml-0.9.4.tar.gz
 Source0  : http://pypi.debian.net/toml/toml-0.9.4.tar.gz
 Summary  : Python Library for Tom's Obvious, Minimal Language
