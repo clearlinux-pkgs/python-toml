@@ -1,5 +1,5 @@
 PKG_NAME := python-toml
-URL = https://files.pythonhosted.org/packages/0e/e8/1aa958599e5326b690a31334112da68a9b75e7563879e2c5103ca219d30a/toml-0.9.6.tar.gz
+URL = https://files.pythonhosted.org/packages/b9/19/5cbd78eac8b1783671c40e34bb0fa83133a06d340a38b55c645076d40094/toml-0.10.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
